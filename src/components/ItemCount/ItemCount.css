@@ -1,0 +1,16 @@
+.containerItemCount{
+    width: 180px;
+}
+
+.containerCounter, .containerButton{
+    width: 100%;
+}
+
+.containerCounter{
+    border: 1px solid #000;
+}
+
+.containerButton button{
+    display: block;
+    margin: 0 auto;
+}
