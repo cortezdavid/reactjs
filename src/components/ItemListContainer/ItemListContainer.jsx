@@ -21,10 +21,9 @@ const ItemListContainer = ({greeting}) => {
         <div>
             <h1>{greeting}</h1>
             {/* <ItemCount stock = {5} initial = {1}  /> */}
-            <div className='containerCards d-flex justify-content-around'>
+            <div className='containerCards d-flex justify-content-around flex-wrap'>
                 <ItemList products = {products} />
-            </div>
-            
+            </div>            
         </div>
     )
 }
