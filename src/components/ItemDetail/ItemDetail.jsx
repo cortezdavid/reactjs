@@ -1,15 +1,23 @@
 import React from 'react'
+import ItemCount from '../ItemCount/ItemCount'
+import { Link } from 'react-router-dom'
 import './ItemDetail.css'
 
 const ItemDetail = ({Item}) => {
     return (
             <div className='cardDetail d-flex'>
-                <img src={Item.pictureUrl} alt="" />
+                <div className='imgDetail d-flex align-items-center'>
+                    <img src={Item.pictureUrl} alt="" />
+                </div>
                 <div className='informationDetail'>
                     <h2>{Item.title}</h2>
                     <label>{Item.description}</label>
-                    <label>{Item.price}</label>
-                    <button className='btn btn-primary'>Comprar</button>
+                    <h2>${Item.price}</h2>
+                    <div className='d-flex justify-content-around'>
+                        <ItemCount stock = {5} initial = {1}  />
+                        <Link to='/'><button className='btn btn-secondary'>Volver al inicio</button></Link>
+                    </div>
+                    
                 </div>
             </div>
     )

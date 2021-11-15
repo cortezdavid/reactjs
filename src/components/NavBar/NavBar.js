@@ -1,18 +1,24 @@
 import './NavBar.css';
 import logo from './logo.png'
 import CartWidget from '../CartWidget/CartWidget';
+import {NavDropdown} from 'react-bootstrap'
+import {Link, NavLink} from 'react-router-dom'
 
 const NavBar = () => {
     return (
         <nav>
             <div className="containerNav">
-                <a href={'index.html'}><img src= {logo} alt="" className='logo'/></a>
+                <Link to='/'><img src= {logo} alt="" className='logo'/></Link>
                 <ul>
-                    <li><a href={'index.html'}>Inicio</a></li>
-                    <li><a href={'index.html'}>Productos</a></li>
-                    <li><a href={'index.html'}>Contacto</a></li>
+                    <li><Link to='/'>Inicio</Link></li>
+                    <li>
+                        <NavDropdown title="Categoría" id="collasible-nav-dropdown">
+                            <NavDropdown.Item as={NavLink} to='/category/DC'>DC</NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to='/category/Marvel'>Marvel</NavDropdown.Item>
+                        </NavDropdown>
+                    </li>
                 </ul>
-                <CartWidget />
+                <Link to='/cart' className='cart'><CartWidget /></Link>
             </div>
             
         </nav>

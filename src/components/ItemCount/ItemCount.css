@@ -1,5 +1,6 @@
 .containerItemCount{
-    width: 180px;
+    width: 400px;
+    margin: 0 auto;
 }
 
 .containerCounter, .containerButton{
@@ -10,7 +11,3 @@
     border: 1px solid #000;
 }
 
-.containerButton button{
-    display: block;
-    margin: 0 auto;
-}

@@ -17,7 +17,7 @@ const ItemCount = ({stock, initial}) => {
     }
 
     return (
-        <div className = 'containerItemCount'>
+        <div className = 'containerItemCount d-flex'>
             <div className = 'containerCounter d-flex justify-content-between'>
                 <button className = {"btn btn-primary " + (count === initial ? "disabled" : "")} onClick={subtractCounter}>-</button>
                 <label> {count} </label>

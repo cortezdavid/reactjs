@@ -1,30 +1,45 @@
 import {useState, useEffect} from 'react'
-// import ItemCount from '../ItemCount/ItemCount'
 import { getFetch } from '../Products/Products'
 import ItemList from '../ItemList/ItemList'
+import { useParams } from 'react-router'
 
 
 const ItemListContainer = ({greeting}) => {
 
     const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
+    const {cID} = useParams()
+
 
     useEffect(() => {
-        getFetch
-        .then(res => {
-            setProducts(res)
-        })
-        .catch(err => console.log(err))
-        .finally(() => console.log("fin"))
-    },[])
+
+        if (cID) {
+            getFetch
+            .then(res => {
+                setProducts(res.filter(product => product.category === cID))
+            })
+            .catch(err => console.log(err))
+            .finally(() => setLoading(false))
+        } else {
+            getFetch
+            .then(res => {
+                setProducts(res)
+            })
+            .catch(err => console.log(err))
+            .finally(() => setLoading(false))
+        }
+    },[cID])
     
     return (
-        <div>
-            <h1>{greeting}</h1>
-            {/* <ItemCount stock = {5} initial = {1}  /> */}
-            <div className='containerCards d-flex justify-content-around flex-wrap'>
-                <ItemList products = {products} />
-            </div>            
-        </div>
+        <>
+        {loading ? <h2>Cargando...</h2> :
+        <div className='container'>
+             <h1>{greeting}{cID}</h1>
+             <div className='containerCards d-flex justify-content-around flex-wrap'>
+                 <ItemList products = {products} />
+             </div>            
+        </div>}
+        </>
     )
 }
 

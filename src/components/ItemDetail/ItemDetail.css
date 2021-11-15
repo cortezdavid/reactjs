@@ -3,11 +3,14 @@
     height: auto;
     margin: 0 auto;
     padding: 10px;
-    border: 2px solid #000;
 }
 
 
 .cardDetail img{
     width: 200px;
     height: 300px;
+}
+
+.cardDetail .informationDetail{
+    padding: 20px;
 }

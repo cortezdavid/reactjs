@@ -1,16 +1,31 @@
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+
 import NavBar from './components/NavBar/NavBar';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import Cart from './components/Cart/Cart'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 function App() {
   return (
-    <div>
-      <NavBar />
-      <ItemListContainer greeting = 'soy un contenedor'/>
-      <ItemDetailContainer />
-    </div>
+    <BrowserRouter>
+      <div className='App'>
+        <NavBar />
+        <Switch>
+          <Route exact path='/'>
+            <ItemListContainer greeting = 'Productos'/>
+          </Route>
+          <Route exact path='/category/:cID'>
+            <ItemListContainer greeting = 'Productos: '/>
+          </Route>
+          <Route exact path='/detail/:productID' component={ItemDetailContainer}/>
+          <Route exact path='/cart' component={Cart}/>
+        </Switch>
+      </div>
+    </BrowserRouter>
+    
   );
 }
 
