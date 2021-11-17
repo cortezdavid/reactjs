@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom'
 import './ItemDetail.css'
 
 const ItemDetail = ({Item}) => {
+
+    const quantityToAdd = (cant) => {
+        console.log(`${cant} elementos agregados`);
+    }
+
     return (
             <div className='cardDetail d-flex'>
                 <div className='imgDetail d-flex align-items-center'>
@@ -14,7 +19,7 @@ const ItemDetail = ({Item}) => {
                     <label>{Item.description}</label>
                     <h2>${Item.price}</h2>
                     <div className='d-flex justify-content-around'>
-                        <ItemCount stock = {5} initial = {1}  />
+                        <ItemCount stock = {5} initial = {1} onAdd = {quantityToAdd} />
                         <Link to='/'><button className='btn btn-secondary'>Volver al inicio</button></Link>
                     </div>
                     
