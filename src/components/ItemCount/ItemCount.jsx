@@ -23,8 +23,8 @@ const ItemCount = ({stock, initial, onAdd}) => {
     }
 
     const changeStatus = () => {
-        setinputType(false)
         onAdd(count)
+        setinputType(false)
     }
 
     return (

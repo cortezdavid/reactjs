@@ -1,12 +1,16 @@
 import React from 'react'
+import { useCartContext } from '../../context/CartContext'
 import ItemCount from '../ItemCount/ItemCount'
+
 import { Link } from 'react-router-dom'
 import './ItemDetail.css'
 
 const ItemDetail = ({Item}) => {
 
+    const {addItem} = useCartContext()
+
     const quantityToAdd = (cant) => {
-        console.log(`${cant} elementos agregados`);
+        addItem(Item, cant)
     }
 
     return (
@@ -19,7 +23,7 @@ const ItemDetail = ({Item}) => {
                     <label>{Item.description}</label>
                     <h2>${Item.price}</h2>
                     <div className='d-flex justify-content-around'>
-                        <ItemCount stock = {5} initial = {1} onAdd = {quantityToAdd} />
+                        <ItemCount stock = {Item.stock} initial = {1} onAdd = {quantityToAdd} />
                         <Link to='/'><button className='btn btn-secondary'>Volver al inicio</button></Link>
                     </div>
                     
