@@ -2,3 +2,8 @@
     font-size: 40px;
     color: #000;
 }
+
+.badge{
+    font-size: .37em!important;
+    top: 25%
+}

@@ -10,30 +10,43 @@ const CartContextProvider = ({children}) => {
     const [cartList, setCartList] = useState([])
 
     const addItem =(Item, cant) => {
-        if (cartList.length === 0) {
-            setCartList([...cartList, {...Item, quantity: cant}])
-        } else {
-            for (const iterator of cartList) {
-                if (iterator.id === Item.id) {
-                    const index = cartList.indexOf(iterator)
-                    iterator.quantity += cant
-                    cartList.splice(index, 1, iterator)
-                    setCartList(cartList)
-                } else {
-                    setCartList([...cartList, {...Item, quantity: cant}])
-                }
+        // if (cartList.length === 0) {
+        //     setCartList([...cartList, {...Item, quantity: cant}])
+        // } else {
+            const index = cartList.findIndex(i => i.id === Item.id)
+            if (index > -1){
+                cartList[index].quantity += cant
+                cartList.splice(index, 1, cartList[index])                
+                setCartList(cartList)
+            } else {
+                setCartList([...cartList, {...Item, quantity: cant}])
             }
-        }
+        // }
+    }
+
+    const quantityItems = () => {
+        return cartList.reduce((acum, Item) => acum += Item.quantity, 0)
+    }
+
+    const totalPrice = () => {
+        return cartList.reduce((total, Item) => total = total + (Item.quantity * Item.price), 0)
     }
 
     const clear = () => {
         setCartList([])
+    }
+
+    const deleteItem = (id) => {
+        setCartList(cartList.filter((i) => i.id !== id));
     }
     
     return (
         <CartContext.Provider value={{
             cartList,
             addItem,
+            deleteItem,
+            quantityItems,
+            totalPrice,
             clear
         }}>
             {children}
