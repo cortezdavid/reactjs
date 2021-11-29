@@ -1,8 +1,9 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
-import { getItem } from '../Products/Products'
+// import { getItem } from '../Products/Products'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams } from 'react-router'
+import { getFirestore } from '../../service/getFirestore'
 
 
 const ItemDetailContainer = () => {
@@ -11,19 +12,21 @@ const ItemDetailContainer = () => {
     const {productID} = useParams()
 
     useEffect(() => {
-        getItem
-        .then(res => {
-            setProductsDetail(res.filter(asd => asd.id === parseInt(productID)))
-        })
+
+        const dbQuery = getFirestore()
+
+        dbQuery.collection('Productos').doc(productID).get()
+        .then(resp => setProductsDetail({ id: resp.id, ...resp.data() }))
         .catch(err => console.log(err))
         .finally(() => setLoading(false))
+        
     },[productID])
 
 
     return (
         <>
         {loading ? <h2>Cargando...</h2> :
-        <ItemDetail Item={ProductsDetail[0]} />}
+        <ItemDetail Item={ProductsDetail} />}
         </>
     )
 }

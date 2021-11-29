@@ -1,7 +1,9 @@
 import {useState, useEffect} from 'react'
-import { getFetch } from '../Products/Products'
+// import { getFetch } from '../Products/Products'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router'
+import { getFirestore } from '../../service/getFirestore'
+
 
 
 const ItemListContainer = ({greeting}) => {
@@ -10,24 +12,22 @@ const ItemListContainer = ({greeting}) => {
     const [loading, setLoading] = useState(true)
     const {cID} = useParams()
 
-
     useEffect(() => {
 
+        const dbQuery = getFirestore()
+
         if (cID) {
-            getFetch
-            .then(res => {
-                setProducts(res.filter(product => product.category === cID))
-            })
+            dbQuery.collection('Productos').where('category', '==', cID ).get()
+            .then(resp => setProducts( resp.docs.map(pro => ( { id: pro.id, ...pro.data() } ) )))
             .catch(err => console.log(err))
             .finally(() => setLoading(false))
         } else {
-            getFetch
-            .then(res => {
-                setProducts(res)
-            })
+            dbQuery.collection('Productos').get()
+            .then(resp => setProducts(resp.docs.map(product => ({ id: product.id, ...product.data()}))))
             .catch(err => console.log(err))
             .finally(() => setLoading(false))
         }
+        
     },[cID])
     
     return (
