@@ -2,10 +2,11 @@ import React from "react"
 import { useCartContext } from '../../context/CartContext'
 import {Table} from 'react-bootstrap'
 import { FaRegTimesCircle } from "react-icons/fa";
+import Form from "../Form/Form";
 
 const Cart = () => {
 
-    const {cartList, clear, deleteItem, totalPrice} = useCartContext()
+    const {cartList, deleteItem, totalPrice} = useCartContext()
 
     return (
         <div>
@@ -38,8 +39,7 @@ const Cart = () => {
                     </tr>
                 </tfoot>
                 </Table>
-            <button className='btn btn-success' onClick={clear}>Comprar</button>
-            <button className='btn btn-danger' onClick={clear}>Borrar todo</button>
+            <Form />
             </>
             }
             

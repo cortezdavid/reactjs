@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react'
-// import { getFetch } from '../Products/Products'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router'
 import { getFirestore } from '../../service/getFirestore'

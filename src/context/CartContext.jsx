@@ -10,18 +10,14 @@ const CartContextProvider = ({children}) => {
     const [cartList, setCartList] = useState([])
 
     const addItem =(Item, cant) => {
-        // if (cartList.length === 0) {
-        //     setCartList([...cartList, {...Item, quantity: cant}])
-        // } else {
-            const index = cartList.findIndex(i => i.id === Item.id)
-            if (index > -1){
-                cartList[index].quantity += cant
-                cartList.splice(index, 1, cartList[index])                
-                setCartList(cartList)
-            } else {
-                setCartList([...cartList, {...Item, quantity: cant}])
-            }
-        // }
+        const index = cartList.findIndex(i => i.id === Item.id)
+        if (index > -1){
+            cartList[index].quantity += cant
+            cartList.splice(index, 1, cartList[index])                
+            setCartList(cartList)
+        } else {
+            setCartList([...cartList, {...Item, quantity: cant}])
+        }
     }
 
     const quantityItems = () => {

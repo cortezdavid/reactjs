@@ -1,6 +1,5 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
-// import { getItem } from '../Products/Products'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams } from 'react-router'
 import { getFirestore } from '../../service/getFirestore'
