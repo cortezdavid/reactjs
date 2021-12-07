@@ -9,7 +9,7 @@ const Form = () => {
     const [phone, setPhone] = useState('')
     const [orderId, setOrderId] = useState(null)
 
-    const {cartList, totalPrice, clear} = useCartContext()
+    const {cartList, totalPrice} = useCartContext()
 
     const generateOrder = (e)=> {
         e.preventDefault()
@@ -48,7 +48,6 @@ const Form = () => {
                 onChange = {(e) => setPhone(e.target.value)}/>
                 <button className='btn btn-success'>Comprar</button>
             </form>
-            <button className='btn btn-danger' onClick={clear}>Borrar todo</button>
             {orderId !== null &&<p>su orden de compra es: {orderId}</p>}
         </div>
     )
