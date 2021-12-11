@@ -26,7 +26,6 @@ const ItemDetail = ({Item}) => {
                         <ItemCount stock = {Item.stock} initial = {1} onAdd = {quantityToAdd} />
                         <Link to='/'><button className='btn btn-secondary'>Volver al inicio</button></Link>
                     </div>
-                    
                 </div>
             </div>
     )

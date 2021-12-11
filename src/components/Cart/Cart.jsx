@@ -4,6 +4,8 @@ import {Table} from 'react-bootstrap'
 import { FaRegTimesCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
+import './Cart.css'
+
 const Cart = () => {
 
     const {cartList, deleteItem, totalPrice, clear} = useCartContext()
@@ -39,10 +41,14 @@ const Cart = () => {
                     </tr>
                 </tfoot>
             </Table>
-            <Link to='/form'><button className='btn btn-secondary'>Checkout</button></Link>
-            <button className='btn btn-danger' onClick={clear}>Borrar todo</button>
-            </>
-            }  
+            <div className='containerButtons d-flex justify-content-center'>
+                <div className='buttons d-flex justify-content-between'>
+                    <Link to='/form'><button className='btn btn-secondary'>Checkout</button></Link>
+                    <button className='btn btn-danger' onClick={clear}>Borrar todo</button>
+                </div>
+            </div>
+            
+            </>}  
         </div>
     )
 }
