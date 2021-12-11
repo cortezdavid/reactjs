@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useCartContext } from '../../context/CartContext'
 import { getFirestore } from '../../service/getFirestore'
 import ModalConfirm from '../ModalConfirm/ModalConfirm'
+import FormError from './FormError'
 
 const Form = () => {
 
@@ -10,7 +11,6 @@ const Form = () => {
     const [phone, setPhone] = useState('')
     const [orderId, setOrderId] = useState(null)
     const [modalShow, setModalShow] = useState(false);
-
 
     const {cartList, totalPrice} = useCartContext()
 
@@ -36,6 +36,7 @@ const Form = () => {
 
     return (
         <div>
+            {totalPrice() === 0 ? <FormError /> :
             <form onSubmit = {generateOrder}>
                 <label>Nombre</label>
                 <input type="text" 
@@ -50,14 +51,11 @@ const Form = () => {
                 value = {phone}
                 onChange = {(e) => setPhone(e.target.value)}/>
                 <button className='btn btn-success' onClick={() => setModalShow(true)}>Comprar</button>
-            </form>
-            {orderId !== null && <ModalConfirm
+                {orderId !== null && <ModalConfirm
                                     show={modalShow}
                                     onHide={() => setModalShow(false)}
-                                    order={orderId}
-                                />
-            }
-            
+                                    order={orderId}/>}
+            </form>}
         </div>
     )
 }
