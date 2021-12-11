@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useCartContext } from '../../context/CartContext'
 import { getFirestore } from '../../service/getFirestore'
+import ModalConfirm from '../ModalConfirm/ModalConfirm'
 
 const Form = () => {
 
@@ -8,6 +9,8 @@ const Form = () => {
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [orderId, setOrderId] = useState(null)
+    const [modalShow, setModalShow] = useState(false);
+
 
     const {cartList, totalPrice} = useCartContext()
 
@@ -46,9 +49,15 @@ const Form = () => {
                 <input type="text"
                 value = {phone}
                 onChange = {(e) => setPhone(e.target.value)}/>
-                <button className='btn btn-success'>Comprar</button>
+                <button className='btn btn-success' onClick={() => setModalShow(true)}>Comprar</button>
             </form>
-            {orderId !== null &&<p>su orden de compra es: {orderId}</p>}
+            {orderId !== null && <ModalConfirm
+                                    show={modalShow}
+                                    onHide={() => setModalShow(false)}
+                                    order={orderId}
+                                />
+            }
+            
         </div>
     )
 }
