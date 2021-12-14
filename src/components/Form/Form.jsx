@@ -11,6 +11,7 @@ const Form = () => {
     const [phone, setPhone] = useState('')
     const [orderId, setOrderId] = useState(null)
     const [modalShow, setModalShow] = useState(false);
+    const [classError, setClassError] = useState('')
 
     const {cartList, totalPrice} = useCartContext()
 
@@ -34,6 +35,10 @@ const Form = () => {
         .catch(err => console.log(err))
     }
 
+    const comprobar = (e) => {
+        (e.target.value) !== email ? setClassError('error') : setClassError('')
+    }
+
     return (
         <div>
             {totalPrice() === 0 ? <FormError /> :
@@ -42,12 +47,17 @@ const Form = () => {
                 <input type="text" 
                 value = {name}
                 onChange = {(e) => setName(e.target.value)}/>
-                <label>Email</label>
-                <input type="text"
+                <label>Confirmar Email</label>
+                <input type = "email"
                 value = {email}
-                onChange = {(e) => setEmail(e.target.value)}/>
+                onChange = { (e) => setEmail(e.target.value)}
+                onBlur = {comprobar}/>
+                <label>Confirmar Email</label>
+                <input type="email"
+                onBlur = {comprobar}
+                className = {classError}/>
                 <label>teléfono</label>
-                <input type="text"
+                <input type="tel"
                 value = {phone}
                 onChange = {(e) => setPhone(e.target.value)}/>
                 <button className='btn btn-success' onClick={() => setModalShow(true)}>Comprar</button>
