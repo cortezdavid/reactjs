@@ -2,8 +2,19 @@
     width: 180px;
     padding: 10px;
     margin: 0 20px;
+    margin-bottom: 30px;
+    border: 0 solid rgba(0, 0, 0, 0.125);
+    border-radius: 20px;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+.card:hover{
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.85);
 }
 
 .card img{
     object-fit: cover;
+}
+
+.card .btn-detail{
+    background-color: #7CD1B8;
 }
