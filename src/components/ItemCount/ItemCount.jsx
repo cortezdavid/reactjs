@@ -30,9 +30,9 @@ const ItemCount = ({stock, initial, onAdd}) => {
     return (
         <div className = 'containerItemCount d-flex'>
             <div className = 'containerCounter d-flex justify-content-between'>
-                <button className = {"btn btn-primary " + (count === initial && "disabled")} onClick={subtractCounter}>-</button>
+                <button className = {"btn btn-count " + (count === initial && "disabled")} onClick={subtractCounter}>-</button>
                 <label> {count} </label>
-                <button className = {"btn btn-primary " + (count >= stock && "disabled")} onClick= {addCounter}>+</button>
+                <button className = {"btn btn-count " + (count >= stock && "disabled")} onClick= {addCounter}>+</button>
             </div>
             <div className = 'containerButton'>
                 {inputType ? <AddButton confirmButton={changeStatus}/> : <GoToCart />}

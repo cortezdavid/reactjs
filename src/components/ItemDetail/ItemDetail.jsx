@@ -14,7 +14,7 @@ const ItemDetail = ({Item}) => {
     }
 
     return (
-            <div className='cardDetail d-flex'>
+            <div className='cardDetail d-flex col-12 col-lg-8 col-md-10'>
                 <div className='imgDetail d-flex align-items-center'>
                     <img src={Item.pictureUrl} alt="" />
                 </div>
@@ -22,7 +22,7 @@ const ItemDetail = ({Item}) => {
                     <h2>{Item.title}</h2>
                     <label>{Item.description}</label>
                     <h2>${Item.price}</h2>
-                    <div className='d-flex justify-content-around'>
+                    <div className='buttonsDetail d-flex justify-content-around'>
                         <ItemCount stock = {Item.stock} initial = {1} onAdd = {quantityToAdd} />
                         <Link to='/'><button className='btn btn-secondary'>Volver al inicio</button></Link>
                     </div>
