@@ -6,7 +6,7 @@ import {Link, NavLink} from 'react-router-dom'
 
 const NavBar = () => {
     return (
-        <Navbar bg="light" expand="lg" className='fixed-top'>
+        <Navbar expand="lg" className='fixed-top'>
             <Container>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Link to='/'><img src= {logo} alt="" className='logo'/></Link>

@@ -12,7 +12,6 @@ const Form = () => {
     const [phone, setPhone] = useState('')
     const [orderId, setOrderId] = useState(null)
     const [modalShow, setModalShow] = useState(false);
-    const [classError, setClassError] = useState('')
 
     const {cartList, totalPrice} = useCartContext()
 
