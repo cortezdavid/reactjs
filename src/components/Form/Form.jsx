@@ -8,6 +8,7 @@ const Form = () => {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
+    const [checkEmail, setCheckEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [orderId, setOrderId] = useState(null)
     const [modalShow, setModalShow] = useState(false);
@@ -35,32 +36,44 @@ const Form = () => {
         .catch(err => console.log(err))
     }
 
-    const comprobar = (e) => {
-        (e.target.value) !== email ? setClassError('error') : setClassError('')
+    const visible = () => {
+        return (checkEmail !== email || email === '' )
     }
 
     return (
         <div>
             {totalPrice() === 0 ? <FormError /> :
             <form onSubmit = {generateOrder}>
-                <label>Nombre</label>
-                <input type="text" 
-                value = {name}
-                onChange = {(e) => setName(e.target.value)}/>
-                <label>Confirmar Email</label>
-                <input type = "email"
-                value = {email}
-                onChange = { (e) => setEmail(e.target.value)}
-                onBlur = {comprobar}/>
-                <label>Confirmar Email</label>
-                <input type="email"
-                onBlur = {comprobar}
-                className = {classError}/>
-                <label>teléfono</label>
-                <input type="tel"
-                value = {phone}
-                onChange = {(e) => setPhone(e.target.value)}/>
-                <button className='btn btn-success' onClick={() => setModalShow(true)}>Comprar</button>
+                <div>
+                    <label>Nombre</label>
+                    <input type="text" 
+                    value = {name}
+                    onChange = {(e) => setName(e.target.value)}
+                    required/>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type = "email"
+                    value = {email}
+                    onChange = { (e) => setEmail(e.target.value)}
+                    required/>
+                </div>
+                <div>
+                    <label>Confirmar Email</label>
+                    <input type="email"
+                    onChange = { (e) => setCheckEmail(e.target.value)}
+                    required
+                    className={(email !== checkEmail) ? 'error' : undefined}/>
+                </div>
+                <div>
+                    <label>teléfono</label>
+                    <input type="tel"
+                    value = {phone}
+                    onChange = {(e) => setPhone(e.target.value)}
+                    required
+                    />
+                </div>
+                <button className={'btn btn-success ' + (visible() && "disabled")} onClick={() => setModalShow(true)}>Comprar</button>
                 {orderId !== null && <ModalConfirm
                                     show={modalShow}
                                     onHide={() => setModalShow(false)}
