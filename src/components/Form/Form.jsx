@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useCartContext } from '../../context/CartContext'
 import { getFirestore } from '../../service/getFirestore'
 import ModalConfirm from '../ModalConfirm/ModalConfirm'
-import FormError from './FormError'
+import Error from '../Error/Error'
 
 import './Form.css'
 
@@ -51,7 +51,7 @@ const Form = () => {
 
     return (
         <div>
-            {totalPrice() === 0 ? <FormError /> :
+            {totalPrice() === 0 ? <Error /> :
             <>
             <h1>Fomulario de compra</h1>
             <h4>Deja tus datos y confirma tu compra</h4>

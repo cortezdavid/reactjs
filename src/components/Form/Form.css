@@ -13,9 +13,6 @@ form input{
 .formBox{
     margin-bottom: 20px;
 }
-.iconError{
-    font-size: 10rem;
-}
 
 .error {
   border: red solid 3px;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { BsExclamationTriangle } from "react-icons/bs";
-import './Form.css'
+import './Error.css'
 
 const FormError = () => {
     return (
