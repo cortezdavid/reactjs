@@ -15,7 +15,7 @@ const Form = () => {
     const [orderId, setOrderId] = useState(null)
     const [modalShow, setModalShow] = useState(false);
 
-    const {cartList, totalPrice} = useCartContext()
+    const {cartList, totalPrice, clear} = useCartContext()
 
     const generateOrder = (e)=> {
         e.preventDefault()
@@ -37,9 +37,17 @@ const Form = () => {
         .catch(err => console.log(err))
     }
 
-    const visible = () => {
-        return (checkEmail !== email || email === '' )
+    const disabled = () => {
+        return (checkEmail !== email)
     }
+
+    const showError = {
+        display: 'none'
+    }
+
+    const hideError = {
+        display: 'block'
+    } 
 
     return (
         <div>
@@ -67,23 +75,27 @@ const Form = () => {
                     <input type="email"
                     onChange = { (e) => setCheckEmail(e.target.value)}
                     required
-                    className={(email !== checkEmail) ? 'error' : undefined}/>
+                    className={disabled() ? 'error' : undefined}/>
+                    <small style={disabled() ? hideError : showError}>Los correos no coinciden</small>
                 </div>
                 <div className='formBox d-flex flex-column align-items-start'>
                     <label>teléfono</label>
-                    <input type="tel"
+                    <input type="number"
                     value = {phone}
                     onChange = {(e) => setPhone(e.target.value)}
                     required
                     />
                 </div>
                 <div>
-                    <button className={'btn btn-success ' + (visible() && "disabled")} onClick={() => setModalShow(true)}>Comprar</button>
+                    <button className={'btn btn-success ' + (disabled() && "disabled")} onClick={() => setModalShow(true)}>Comprar</button>
                 </div>
                 {orderId !== null && <ModalConfirm
                                     show={modalShow}
-                                    onHide={() => setModalShow(false)}
-                                    order={orderId}/>}
+                                    onHide={() => {setModalShow(false); clear();}}
+                                    order={orderId}
+                                    name={name}
+                                    email={email}
+                                    />}
             </form>
             </>}
         </div>

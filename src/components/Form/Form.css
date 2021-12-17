@@ -10,10 +10,13 @@ form input{
     padding: 5px;
 }
 
+.formBox{
+    margin-bottom: 20px;
+}
 .iconError{
     font-size: 10rem;
 }
 
-.error{
-    border: 2px solid red;
+.error {
+  border: red solid 3px;
 }

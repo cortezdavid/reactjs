@@ -1,8 +1,10 @@
 import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 
 const ModalConfirm = (props) => {
+    
     return (
         <>
         <Modal
@@ -12,17 +14,16 @@ const ModalConfirm = (props) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                Modal heading
+                ¡Gracias por su compra!
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>Centered Modal</h4>
-                <p>
-                Su orden es {props.order}
+                <p>Sr/sra {props.name} le enviaremos más información al siguiente correo {props.email}
                 </p>
+                <p>Su Id de compra es {props.order}</p>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Cerrar</Button>
+                <Link to=''><Button onClick={props.onHide}>Volver al inicio</Button></Link>
             </Modal.Footer>
         </Modal>
     </>   
