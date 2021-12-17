@@ -7,7 +7,7 @@ const GoToCart = () => {
 }
 
 const AddButton = ({confirmButton}) => {
-    return <button className='btn btn-primary' onClick={confirmButton}>Agregar al carrito</button>
+    return <button className='btn btn-success' onClick={confirmButton}>Agregar al carrito</button>
 }
 
 const ItemCount = ({stock, initial, onAdd}) => {

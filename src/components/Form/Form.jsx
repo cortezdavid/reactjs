@@ -53,7 +53,7 @@ const Form = () => {
         <div>
             {totalPrice() === 0 ? <Error /> :
             <>
-            <h1>Fomulario de compra</h1>
+            <h1>Formulario de compra</h1>
             <h4>Deja tus datos y confirma tu compra</h4>
             <form onSubmit = {generateOrder} className='d-flex flex-column'>
                 <div className='formBox d-flex flex-column align-items-start'>
