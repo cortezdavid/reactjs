@@ -4,6 +4,8 @@ import { getFirestore } from '../../service/getFirestore'
 import ModalConfirm from '../ModalConfirm/ModalConfirm'
 import FormError from './FormError'
 
+import './Form.css'
+
 const Form = () => {
 
     const [name, setName] = useState('')
@@ -42,29 +44,32 @@ const Form = () => {
     return (
         <div>
             {totalPrice() === 0 ? <FormError /> :
-            <form onSubmit = {generateOrder}>
-                <div>
+            <>
+            <h1>Fomulario de compra</h1>
+            <h4>Deja tus datos y confirma tu compra</h4>
+            <form onSubmit = {generateOrder} className='d-flex flex-column'>
+                <div className='formBox d-flex flex-column align-items-start'>
                     <label>Nombre</label>
                     <input type="text" 
                     value = {name}
                     onChange = {(e) => setName(e.target.value)}
                     required/>
                 </div>
-                <div>
+                <div className='formBox d-flex flex-column align-items-start'>
                     <label>Email</label>
                     <input type = "email"
                     value = {email}
                     onChange = { (e) => setEmail(e.target.value)}
                     required/>
                 </div>
-                <div>
+                <div className='formBox d-flex flex-column align-items-start'>
                     <label>Confirmar Email</label>
                     <input type="email"
                     onChange = { (e) => setCheckEmail(e.target.value)}
                     required
                     className={(email !== checkEmail) ? 'error' : undefined}/>
                 </div>
-                <div>
+                <div className='formBox d-flex flex-column align-items-start'>
                     <label>teléfono</label>
                     <input type="tel"
                     value = {phone}
@@ -72,12 +77,15 @@ const Form = () => {
                     required
                     />
                 </div>
-                <button className={'btn btn-success ' + (visible() && "disabled")} onClick={() => setModalShow(true)}>Comprar</button>
+                <div>
+                    <button className={'btn btn-success ' + (visible() && "disabled")} onClick={() => setModalShow(true)}>Comprar</button>
+                </div>
                 {orderId !== null && <ModalConfirm
                                     show={modalShow}
                                     onHide={() => setModalShow(false)}
                                     order={orderId}/>}
-            </form>}
+            </form>
+            </>}
         </div>
     )
 }

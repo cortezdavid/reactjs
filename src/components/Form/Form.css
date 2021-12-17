@@ -1,3 +1,15 @@
+form{
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #FAEDC6;
+}
+
+form input{
+    width: 100%;
+    padding: 5px;
+}
+
 .iconError{
     font-size: 10rem;
 }
