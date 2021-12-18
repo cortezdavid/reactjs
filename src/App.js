@@ -20,7 +20,7 @@ function App() {
             <Route exact path='/'>
               <ItemListContainer greeting = 'Productos'/>
             </Route>
-            <Route exact path='/category/:cID'>
+            <Route exact path='/category/:categoryID'>
               <ItemListContainer greeting = 'Productos: '/>
             </Route>
             <Route exact path='/detail/:productID' component={ItemDetailContainer}/>
