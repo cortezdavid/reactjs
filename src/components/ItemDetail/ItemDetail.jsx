@@ -21,7 +21,7 @@ const ItemDetail = ({Item}) => {
                 <div className='informationDetail'>
                     <h2>{Item.title}</h2>
                     <label>{Item.description}</label>
-                    <h2>${Item.price}</h2>
+                    <h2>Precio: ${Item.price}</h2>
                     <div className='buttonsDetail d-flex justify-content-around'>
                         <ItemCount stock = {Item.stock} initial = {1} onAdd = {quantityToAdd} />
                         <Link to='/'><button className='btn btn-secondary'>Volver al inicio</button></Link>

@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import Error from '../Error/Error'
 import { useParams } from 'react-router'
+import { Spinner } from 'react-bootstrap'
 import { getFirestore } from '../../service/getFirestore'
 
 
@@ -29,7 +30,7 @@ const ItemDetailContainer = () => {
         <>
         {!loading && !errorDetail && <ItemDetail Item={ProductsDetail} />}
         {!loading && errorDetail && <Error />}
-        {loading && <h2>Cargando...</h2>}
+        {loading && <Spinner animation="border" />}
         </>
     )
 }

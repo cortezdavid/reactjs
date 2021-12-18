@@ -20,7 +20,7 @@ const ModalConfirm = (props) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <p>Sr/sra {props.name} le enviaremos más información al siguiente correo {props.email}
+                <p>Sr./sra. {props.name} le enviaremos más información al siguiente correo {props.email}
                 </p>
                 <p>Su Id de compra es {props.order}</p>
             </Modal.Body>

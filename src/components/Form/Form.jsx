@@ -7,14 +7,13 @@ import Error from '../Error/Error'
 import './Form.css'
 
 const Form = () => {
-
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [checkEmail, setCheckEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [orderId, setOrderId] = useState(null)
     const [modalShow, setModalShow] = useState(false);
-
+    
     const {cartList, totalPrice, clear} = useCartContext()
 
     const generateOrder = (e)=> {
