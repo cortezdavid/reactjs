@@ -2,7 +2,7 @@
 
 Proyecto Final para Coderhouse, de un E-Commerce de una tienda de comics. Desarrollada por David Cortez
 
-Ver [Página web](https://vigilant-haibt-e9164f.netlify.app/) (demo)
+Ver [Página web](https://tender-saha-4a56f2.netlify.app/) (demo)
 
 ## Librerias usadas:
 
